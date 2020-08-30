@@ -8,7 +8,7 @@ I've linked this file on Github to a shorter, more memorable address on my
 website so you can get it on your machine with this short command:
 
 ```
-curl -LO lukesmith.xyz/emailwiz.sh
+git clone https://github.com/alanxyz/emailwiz.git
 ```
 
 When prompted by a dialog menu at the beginning, select "Internet Site", then
