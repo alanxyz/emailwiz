@@ -60,7 +60,7 @@ actually works perfectly.
    big email services like gmail will stop emails coming from mail servers
    with no/invalid rDNS lookups. This means your email will fail to even
    make it to the receipients spam folder; it will never make it to them.
-5. `apt purge` all your previous (failed) attempts to install and configure a
+5. `pacman -Rcsn` all your previous (failed) attempts to install and configure a
    mailserver. Get rid of _all_ your system settings for Postfix, Dovecot,
    OpenDKIM and everything else. This script builds off of a fresh install.
 6. Some VPS providers block port 25 (used to send mail). You may need to
