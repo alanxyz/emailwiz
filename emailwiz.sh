@@ -24,7 +24,7 @@
 # them anyway.
 
 # 3. If you've been toying around with your server settings trying to get
-# postfix/dovecot/etc. working before running this, I recommend you `apt purge`
+# postfix/dovecot/etc. working before running this, I recommend you `pacman -Rcsn`
 # everything first because this script is build on top of only the defaults.
 # Clear out /etc/postfix and /etc/dovecot yourself if needbe.
 
@@ -34,9 +34,9 @@
 # `mail.` before it).
 
 echo "Installing programs..."
-pacman -S postfix dovecot-imapd dovecot-sieve opendkim spamassassin spamc
+pacman -S postfix dovecot dovecot opendkim spamassassin spamc
 # Check if OpenDKIM is installed and install it if not.
-which opendkim-genkey >/dev/null 2>&1 || apt install opendkim-tools
+which opendkim-genkey >/dev/null 2>&1 || pacman -S opendkim-tools
 domain="$(cat /etc/mailname)"
 subdom="mail"
 maildomain="$subdom.$domain"
