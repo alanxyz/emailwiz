@@ -34,7 +34,7 @@
 # `mail.` before it).
 
 echo "Installing programs..."
-pacman -S postfix dovecot dovecot opendkim spamassassin spamc
+pacman -S postfix dovecot dovecot opendkim spamassassin spamassassin-spamc
 # Check if OpenDKIM is installed and install it if not.
 which opendkim-genkey >/dev/null 2>&1 || pacman -S opendkim-tools
 domain="$(cat /etc/mailname)"
