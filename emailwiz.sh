@@ -34,9 +34,11 @@
 # `mail.` before it).
 
 echo "Installing programs..."
-pacman -S postfix dovecot dovecot opendkim spamassassin spamassassin-spamc
+pacman -S postfix dovecot dovecot opendkim spamassassin 
 # Check if OpenDKIM is installed and install it if not.
 which opendkim-genkey >/dev/null 2>&1 || pacman -S opendkim
+read -p "Enter your domain: "  dm
+echo "$dm" > /etc/mailname
 domain="$(cat /etc/mailname)"
 subdom="mail"
 maildomain="$subdom.$domain"
@@ -269,7 +271,7 @@ postconf -e "mailbox_command = /usr/lib/dovecot/deliver"
 
 for x in dovecot postfix opendkim spamassassin; do
 	printf "Restarting %s..." "$x"
-	service "$x" restart && printf " ...done\\n"
+	systemctl restart "$x" && printf " ...done\\n"
 done
 
 pval="$(tr -d "\n" </etc/postfix/dkim/mail.txt | sed "s/k=rsa.* \"p=/k=rsa; p=/;s/\"\s*\"//;s/\"\s*).*//" | grep -o "p=.*")"
